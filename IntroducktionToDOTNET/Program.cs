@@ -5,10 +5,13 @@
 //#define TASK_3
 //#define TASK_4
 //#define TASK_5
+//#define TASK_6
 
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -253,6 +256,21 @@ namespace IntroductionToDOTNET
 			} while (Console.ReadKey().Key != ConsoleKey.Escape);
 #endif
 
+#if TASK_6
+			do
+			{
+				string exp;
+				//double operand_1, operand_2, answer;
+				Console.Write("Введите выражение (без пробелов): ");
+				exp = Console.ReadLine();
+				DataTable table = new DataTable();
+				double result = Convert.ToDouble(table.Compute(exp, " "));
+				Console.WriteLine(result);
+				Console.WriteLine("Для выхода нажмите ESCAPE, для продолжения нажмите ENTER.");
+			} while (Console.ReadKey().Key != ConsoleKey.Escape);
+
+
+#endif
 		}
 	}
 }
