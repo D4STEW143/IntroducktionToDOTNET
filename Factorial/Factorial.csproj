@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{56E18BFC-8D49-46D9-B685-06C6CA4E3414}</ProjectGuid>
+    <ProjectGuid>{260BD030-A685-40B5-9796-CF4A7D483272}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>IntroducktionToDOTNET</RootNamespace>
-    <AssemblyName>IntroducktionToDOTNET</AssemblyName>
+    <RootNamespace>Factorial</RootNamespace>
+    <AssemblyName>Factorial</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

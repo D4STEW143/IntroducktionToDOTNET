@@ -1,17 +1,14 @@
 ﻿//#define CONSOLE_PARAMETERS 
 //#define INPUT_DATA
-//#define TASK_1
-//#define TASK_2
-//#define TASK_3
-//#define TASK_4
-//#define TASK_5
-//#define TASK_6
+//#define DATA_TYPES
+//#define LITERALS
 
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,6 +16,7 @@ namespace IntroductionToDOTNET
 {
 	internal class Program
 	{
+		static readonly string delimeter = "\n-----------------------------------------\n";
 		static void Main(string[] args)
 		{
 			Console.Title = "Introduction to .NET";
@@ -46,231 +44,69 @@ namespace IntroductionToDOTNET
 			Console.WriteLine($"Ваше имя: {first_name}, Ваша фамилия: {last_name}, Ваш возраст: {age}"); //интерполяция строк  
 #endif
 
-#if TASK_1
-            Console.WriteLine("Фигуры.");
-            Console.WriteLine();
-            for (int i = 0; i < 5; i++)
-            {
-                for (int j = 0; j < 5; j++) 
-                { Console.Write("*"); }
-                Console.WriteLine();
-            }
-            //------------------------------------------------------
-            Console.WriteLine();
-            int s = 1;
-            do
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    for (int j = 0; j < s; j++)
-                    { Console.Write("*"); }
-                    Console.WriteLine();
-                    s++;
-                }
-            } while (s != 6);
-            //------------------------------------------------------
-            Console.WriteLine();
-            for (int i = 0;i < 5; i++)
-            {
-                for (int j = 5; j > i; j--)
-                { Console.Write("*"); }
-                Console.WriteLine();
-            }
-            //------------------------------------------------------
-            Console.WriteLine();
-            for (int i = 0; i < 6; i++)
-            {
-                for (int j = 0; j < i; j++)
-                    { Console.Write(" "); }
-                for (int k = 5; k > i; k--)
-                    { Console.Write("*"); }
-                Console.WriteLine();
-            }
-            //------------------------------------------------------
-            Console.WriteLine();
-            for (int i = 0; i < 6; i++)
-            {
-                for (int j = 5; j > i; j--)
-                    { Console.Write(" "); }
-                for (int k = 0; k < i; k++)
-                    { Console.Write("*"); }
-                Console.WriteLine();
-            }
-            //------------------------------------------------------
-            Console.WriteLine();
-            for (int i = 0; i < 5; i++)
-            {
-                for (int j = i; j < 5; j++)
-                { Console.Write(" "); }
-                Console.Write("/");
-                for (int j = 0; j < i * 2; j++)
-                { Console.Write(" "); }
-                Console.Write("\\");
-                Console.WriteLine();
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                for (int j = 0; j <= i; j++)
-                { Console.Write(" "); }
-                Console.Write("\\");
-                for (int j = (i + 1) * 2; j < 5 * 2; j++)
-                { Console.Write(" "); }
-                Console.Write("/");
-                Console.WriteLine();
-            }
-
-            //------------------------------------------------------
-            Console.WriteLine();
-            int e = 5;
-            for (int i = 0; i < e; i++)
-            {
-                for (int j = 0; j < e; j++)
-                { Console.Write(i % 2 == j % 2 ? "+" : "-"); }
-                Console.WriteLine();
-            }
-#endif
-
-#if TASK_2
-
-			//Console.OutputEncoding = Encoding.GetEncoding(65001); Попытка решить вопрос с кодировкой не увенчалась успехом. Сделал кондово.
-			int n = 8;
-			Console.Write("┌");
-			for (int k = 0; k < n * 2; k++)
-			{ Console.Write("─"); }
-			Console.WriteLine("┐");
-			for (int i = 0; i < n; i++)
-			{
-				Console.Write("│");
-				for (int j = 0; j < n * 2; j++)
-				{ Console.Write(i % 2 == j / 2 % 2 ? "█" : " "); }
-				Console.WriteLine("│");
-			}
-			Console.Write("└");
-			for (int k = 0; k < n * 2; k++)
-			{ Console.Write("─"); }
-			Console.WriteLine("┘");
-#endif
-
-#if TASK_3
-			int l = 5;
-			for (int i = 0; i < l; i++)
-			{
-				for (int j = 0; j < l; j++)
-				{
-					for (int k = 0; k < l; k++)
-					{
-						for (int z = 0; z < l; z++)
-						{
-							if ((i + k) % 2 == 0) Console.Write("██");
-							else Console.Write("  ");
-						}
-					}
-					Console.WriteLine();
-				}
-			}
-#endif
-
-#if TASK_4
-			//Console.SetWindowSize(60, 30);
-			int x = 0;
-			int y = 0;
-			Console.Write("█");
-			do
-			{
-				switch (Console.ReadKey().Key)
-				{
-					case ConsoleKey.W: case ConsoleKey.UpArrow: y--; break;
-					case ConsoleKey.A: case ConsoleKey.LeftArrow: x--; break;
-					case ConsoleKey.S: case ConsoleKey.DownArrow: y++; break;
-					case ConsoleKey.D: case ConsoleKey.RightArrow: x++; break;
-					case ConsoleKey.Escape: return;
-				}
-				//Решение проблемы с выходом за границы экрана слева сверху. Ограничить справа и снизу пока не догадался как.
-				//Вариант через запрос размера буфера по вертикали и горизонтали не дает ограничение, а выкидывает exeption, поэтому его не использую.
-				if (x < 0) x = 0;
-				if (y < 0) y = 0;
-				Console.Clear();
-				Console.SetCursorPosition(x, y);
-				Console.Write("█");
-			} while (true);
+#if DATA_TYPES
+            //Console.WriteLine("---Bool---");
+            //Console.WriteLine(bool.FalseString);
+            //Console.WriteLine(bool.TrueString);
+            //Console.WriteLine("---Char---");
+            //Console.WriteLine(sizeof(char));
+            //Console.WriteLine((int)char.MinValue);
+            //Console.WriteLine((int)char.MaxValue);
+            //Console.WriteLine("---Short---");
+            //Console.WriteLine(sizeof(short));
+            //Console.WriteLine($"{short.MinValue} to {short.MaxValue}");
+            //Console.WriteLine("--uShort---");
+            //Console.WriteLine(sizeof(ushort));
+            //Console.WriteLine($"{ushort.MinValue} to {ushort.MaxValue}");
+			Console.WriteLine(delimeter);
+            Console.WriteLine($"Переменная типа 'short' занимает {sizeof(short)} байт памяти, и принимает значения в диапазоне ");
+            Console.WriteLine($"ushort: {ushort.MinValue} ... {ushort.MaxValue}");
+            Console.WriteLine($"short: {short.MinValue} ... {short.MaxValue}");
+			Console.WriteLine($"Класс-обвертка: Int16");
+			Console.WriteLine(delimeter);
+			Console.WriteLine($"Переменная типа 'int' занимает {sizeof(int)} байт памяти, и принимает значения в диапазоне ");
+			Console.WriteLine($"uint: {uint.MinValue} ... {uint.MaxValue}");
+			Console.WriteLine($"int: {int.MinValue} ... {int.MaxValue}");
+			Console.WriteLine($"Класс-обвертка: Int32");
+			Console.WriteLine(delimeter);
+			Console.WriteLine($"Переменная типа 'long' занимает {sizeof(long)} байт памяти, и принимает значения в диапазоне ");
+			Console.WriteLine($"ulong: {ulong.MinValue} ... {ulong.MaxValue}");
+			Console.WriteLine($"long: {long.MinValue} ... {long.MaxValue}");
+			Console.WriteLine($"Класс-обвертка: Int64");
+			Console.WriteLine(delimeter);
+			Console.WriteLine($"Переменная типа 'float' занимает {sizeof(float)} байт памяти, и принимает значения в диапазоне ");
+			Console.WriteLine($"float: {float.MinValue} ... {float.MaxValue}");
+			Console.WriteLine($"Класс-обвертка: Single");
+			Console.WriteLine(delimeter);
+			Console.WriteLine($"Переменная типа 'double' занимает {sizeof(double)} байт памяти, и принимает значения в диапазоне ");
+			Console.WriteLine($"double: {double.MinValue} ... {double.MaxValue}");
+			Console.WriteLine($"Класс-обвертка: Double");
+			Console.WriteLine(double.Epsilon);
+			//IEEE-754
+			Console.WriteLine(delimeter);
+			Console.WriteLine($"Переменная типа 'decimal' занимает {sizeof(decimal)} байт памяти, и принимает значения в диапазоне ");
+			Console.WriteLine($"decimal: {decimal.MinValue} ... {decimal.MaxValue}");
+			Console.WriteLine($"Класс-обвертка: Decimal");
+			Console.WriteLine(delimeter);
 
 #endif
-
-#if TASK_5
-
-			do
-			{
-				Console.WriteLine("1.Сложение\t2.Вычитание\t3.Умножение\t4.Деление");
-				Console.WriteLine("5.Возведение в степень\t6.Извлечение корня");
-				double operand_1, operand_2, answer;
-				switch (Convert.ToInt32(Console.ReadLine()))
-				{
-					case 1:
-						{
-							Console.Write("Введите операнд 1: ");
-							operand_1 = Convert.ToDouble(Console.ReadLine());
-							Console.Write("Введите операнд 2: ");
-							operand_2 = Convert.ToDouble(Console.ReadLine());
-							Console.WriteLine($"Ответ: {answer = operand_1 = operand_2}"); break;
-						}
-					case 2:
-						{
-							Console.Write("Введите операнд 1: ");
-							operand_1 = Convert.ToDouble(Console.ReadLine());
-							Console.Write("Введите операнд 2: ");
-							operand_2 = Convert.ToDouble(Console.ReadLine());
-							Console.WriteLine($"Ответ: {answer = operand_1 - operand_2}"); break;
-						}
-					case 3:
-						{
-							Console.Write("Введите операнд 1: ");
-							operand_1 = Convert.ToDouble(Console.ReadLine());
-							Console.Write("Введите операнд 2: ");
-							operand_2 = Convert.ToDouble(Console.ReadLine());
-							Console.WriteLine($"Ответ: {answer = operand_1 * operand_2}"); break;
-						}
-					case 4:
-						{
-							Console.Write("Введите операнд 1: ");
-							operand_1 = Convert.ToDouble(Console.ReadLine());
-							Console.Write("Введите операнд 2: ");
-							operand_2 = Convert.ToDouble(Console.ReadLine());
-							Console.WriteLine($"Ответ: {answer = operand_1 / operand_2}"); break;
-						}
-					case 5:
-						{
-							Console.WriteLine("Введите число для возведения: ");
-							operand_1 = Convert.ToDouble(Console.ReadLine());
-							Console.WriteLine("Введите степень, в которую нужно возвести число: ");
-							operand_2 = Convert.ToDouble(Console.ReadLine());
-							Console.WriteLine($"Ответ: {answer = Math.Pow(operand_1, operand_2)}"); break;
-						}
-					case 6:
-						{
-							Console.WriteLine("Введите число для извлечения корня: ");
-							operand_1 = Convert.ToDouble(Console.ReadLine());
-							Console.WriteLine($"Ответ: {answer = Math.Sqrt(operand_1)}"); break;
-						}
-					default: Console.WriteLine("Попробуйте еще раз. Нажмите Enter."); break;
-				}
-			} while (Console.ReadKey().Key != ConsoleKey.Escape);
+#if LITERALS
+            Console.WriteLine(((object)5.0m).GetType());
+            //Console.WriteLine(Int16.MaxValue);
+            Console.WriteLine("+".GetType());
 #endif
+			int a = 2000000000;
+			int b = 5;
+            ////a = b; // CS0266
+            //a = (short)b; 
+            //b = a;
 
-#if TASK_6
-			do
-			{
-				string exp;
-				//double operand_1, operand_2, answer;
-				Console.Write("Введите выражение (без пробелов): ");
-				exp = Console.ReadLine();
-				DataTable table = new DataTable();
-				double result = Convert.ToDouble(table.Compute(exp, " "));
-				Console.WriteLine(result);
-				Console.WriteLine("Для выхода нажмите ESCAPE, для продолжения нажмите ENTER.");
-			} while (Console.ReadKey().Key != ConsoleKey.Escape);
+            ////uint c = b; //CS0266
+            //uint c = (uint)b; //CS0266
+            //Console.WriteLine(c);
 
+            Console.WriteLine((a*b).GetType());
 
-#endif
-		}
+        }
 	}
 }
