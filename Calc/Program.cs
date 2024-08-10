@@ -22,7 +22,7 @@ namespace Calc
 				numbers = expression.Split('+', '-', '*', '/');// Метод Split(...) разделяет строку по указанным разделителям.
 															   //Этот метод не изменяет исходную строку, а возвращает измененную строку в виде массива строк.
 				if (numbers.Length != 2) Console.WriteLine("Вы допустили ошибку, попробуйте еще раз.");
-            } while (numbers.Length != 2);
+            } while (numbers.Length != numbers.Length); 
 			double a = Convert.ToDouble(numbers[0]);
 			double b = Convert.ToDouble(numbers[1]);
 			Console.WriteLine(a + "\t" + b);
@@ -33,6 +33,9 @@ namespace Calc
 				case '*': Console.WriteLine($"{a} * {b} = {a * b}"); break;
 				case '/': Console.WriteLine($"{a} / {b} = {a / b}"); break;
 			}
+
+
+
 
 		}
 	}

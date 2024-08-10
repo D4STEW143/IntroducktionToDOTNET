@@ -1,9 +1,9 @@
-﻿#define TASK_1
-#define TASK_2
-#define TASK_3
+﻿//#define TASK_1
+//#define TASK_2
+//#define TASK_3
 #define TASK_4
-#define TASK_5
-#define TASK_6
+//#define TASK_5
+//#define TASK_6
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -19,6 +19,7 @@ namespace HomeWork1
 	{
 		static void Main(string[] args)
 		{
+
 #if TASK_1
             Console.WriteLine("Фигуры.");
             Console.WriteLine();
