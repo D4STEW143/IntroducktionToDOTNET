@@ -12,7 +12,43 @@ namespace Calc2
 		static void Main(string[] args)
 		{
 			Console.Write("Введите арифмитическое выражение: ");
-			expression = "22+33*44-55/11";
+			expression = "(22+33)*(77*(55-50))/11";
+			Console.WriteLine(expression);
+			Explore(expression);
+			Console.WriteLine(Calculate(expression));
+
+
+
+		}
+		static void Explore(string expression)
+		{
+			for (int i = 0; i < expression.Length; i++)
+			{
+				if (expression[i] == '(')
+				{
+					for (int j = i + 1; j < expression.Length; j++)
+					{
+						if (expression[j] == ')')
+						{
+							expression = expression.Replace
+								(
+								expression.Substring(i, j - i + 1), //подменяем часть выражения со скобками, но 
+								Calculate(expression.Substring(i + 1, j - i - 1)).ToString() //в Calculate() передаем выражение без скобок 
+								);
+							Program.expression = expression;
+							break;
+						}
+						if (expression[j] == '(')
+						{
+							Explore(expression.Substring(j));
+						}
+					}
+				}
+			}
+
+		}
+		static double Calculate(string expression)
+		{
 			Console.WriteLine(expression);
 			string[] s_numbers = expression.Split('+', '-', '*', '/');
 			for (int i = 0; i < s_numbers.Length; i++) Console.Write(s_numbers[i] + '\t'); Console.WriteLine();
@@ -26,50 +62,48 @@ namespace Calc2
 
 			string[] operators = expression.Split('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ' ', '.');
 			for (int i = 0; i < operators.Length; i++) Console.Write(operators[i] + "\t"); Console.WriteLine();
-			operators = operators.Where(val => val != "").ToArray(); 
+			operators = operators.Where(val => val != "").ToArray();
 			for (int i = 0; i < operators.Length; i++) Console.Write(operators[i] + "\t"); Console.WriteLine();
 
 			for (int i = 0; i < operators.Length; i++)
 			{
-				while ( operators[i] == "*" || operators[i] =="/")
+				while (operators[i] == "*" || operators[i] == "/")
 				{
 					if (operators[i] == "*") numbers[i] *= numbers[i + 1];
 					if (operators[i] == "/") numbers[i] /= numbers[i + 1];
-					ShiftLeft(numbers, i+1);
+					ShiftLeft(numbers, i + 1);
 					ShiftLeft(operators, i);
 				}
 			}
 			Print(numbers);
 			Print(operators);
-			
+
 			for (int i = 0; i < operators.Length; i++)
 			{
-				while ( operators[i] == "+" || operators[i] =="-")
+				while (operators[i] == "+" || operators[i] == "-")
 				{
 					if (operators[i] == "+") numbers[i] += numbers[i + 1];
 					if (operators[i] == "-") numbers[i] -= numbers[i + 1];
-					ShiftLeft(numbers, i+1);
+					ShiftLeft(numbers, i + 1);
 					ShiftLeft(operators, i);
 				}
 			}
 			Print(numbers);
 			Print(operators);
-			Console.WriteLine($"Ваш ответ: {numbers[0]}");
-
-
-        }
+			return numbers[0];
+		}
 		static double[] ShiftLeft(double[] arr, int index = 0)
 		{
-			for (int i = index; i < arr.Length - 1; i++) 
+			for (int i = index; i < arr.Length - 1; i++)
 				arr[i] = arr[i + 1];
-			arr[arr.Length-1] = 0;
+			arr[arr.Length - 1] = 0;
 			return arr;
 		}
 		static string[] ShiftLeft(string[] arr, int index = 0)
 		{
-			for (int i = index; i < arr.Length - 1; i++) 
+			for (int i = index; i < arr.Length - 1; i++)
 				arr[i] = arr[i + 1];
-			arr[arr.Length-1] = null;
+			arr[arr.Length - 1] = null;
 			return arr;
 		}
 		static void Print(double[] arr)
