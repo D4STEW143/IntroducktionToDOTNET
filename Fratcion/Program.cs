@@ -28,11 +28,13 @@ namespace Fraction
 			Fraction C = new Fraction(A * B);
 			Fraction D = new Fraction(A + B);
 			Fraction E = new Fraction(A - B);
+			Fraction F = new Fraction(2.75);
 			A.Print();
 			B.Print();
 			C.Print();
 			D.Print();
 			E.Print();
+			F.Print();
 			(A / B).Print();
             Console.WriteLine(A < B);
             Console.WriteLine(A > B);

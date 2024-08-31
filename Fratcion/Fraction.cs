@@ -51,7 +51,15 @@ namespace Fraction
 			this.Numerator = other.Numerator;
 			this.Denominator = other.Denominator;
 			//Console.WriteLine($"Copy Constr \t{this.GetHashCode()}");
-
+		}
+		public Fraction(double number)
+		{
+			Integer = (int)Math.Truncate(number);
+			int tmp_n = (int)((number-Math.Truncate(number))*100);
+			int tmp_d = 100;
+			int tmp_gcf = GCD(tmp_n, tmp_d);
+			Numerator = tmp_n/tmp_gcf;
+			Denominator = tmp_d/tmp_gcf;
 		}
 		~Fraction()
 		{ //Console.WriteLine($"Def destr \t{this.GetHashCode()}");
