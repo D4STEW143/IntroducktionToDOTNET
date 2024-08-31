@@ -57,9 +57,9 @@ namespace Fraction
 			Integer = (int)Math.Truncate(number);
 			int tmp_n = (int)((number-Math.Truncate(number))*100);
 			int tmp_d = 100;
-			int tmp_gcf = GCD(tmp_n, tmp_d);
-			Numerator = tmp_n/tmp_gcf;
-			Denominator = tmp_d/tmp_gcf;
+			int tmp_gcd = GCD(tmp_n, tmp_d);
+			Numerator = tmp_n/tmp_gcd;
+			Denominator = tmp_d/tmp_gcd;
 		}
 		~Fraction()
 		{ //Console.WriteLine($"Def destr \t{this.GetHashCode()}");
